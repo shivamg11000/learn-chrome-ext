@@ -1,0 +1,22 @@
+{/* A Hello World Chrome Extension */
+
+    // required
+    "manifest_version": 2,
+    "name": "Hello World",
+    "version": "1.0",
+    
+    // optional
+    "description": "A Hello World extension!",
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+
+    //type of extension
+    "browser_action": {
+        "default_icon": "icon16.png",
+        "default_popup": "popup.html"
+
+    }
+}
