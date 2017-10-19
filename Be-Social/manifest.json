@@ -1,0 +1,26 @@
+{
+    // required
+    "manifest_version": 2,
+    "name": "Be Social",
+    "version": "1.0",
+
+    // all other optional
+    "description": "This extension allows user to add his social links and afterwards he can become lazy, just a sinlge btn click will open all his social links in subsequent tabs",
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+
+    // type of extension
+    "browser_action": {
+        "default_icon": "icon16.png",
+        "default_popup": "popup.html"
+    },
+
+    "permissions": [
+        "tabs",
+        "notifications"
+    ]
+
+}

@@ -1,0 +1,55 @@
+html{
+    font-size: 18px;
+}
+
+body{
+    text-align: center;
+    padding: 0 15px;
+}
+body * {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
+/***************/
+.head-wrapper{
+    display: flex;
+}
+
+h1{
+    font-size: 1.4rem;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+.highlight{
+    border-bottom: 1px solid #888;
+}
+
+.social-link{
+    font-size: 0.8rem;
+    margin: 7px 0;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid #777;
+    background-color: #f8f8f8;
+}
+
+button{
+    background-color: rgba(58,106,184, 0.9);
+    color: white;
+    padding: 3px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin: 8px 0;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+button:hover{
+    opacity: 0.8;
+}
+#add-more{
+    font-size: 0.8rem;
+}
