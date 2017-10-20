@@ -1,12 +1,28 @@
 
 $(function(){
     let socialLinks = []
+    const inputTemplate = '<div><input type="text" class="social-link link0" placeholder="https://"/><span>X</span></div>'
 
+    // load social links if stored/exist previously
+    chrome.storage.sync.get('socialLinks', function(object){
+        if(!object)
+            return null
+
+        socialLinks = [...object.socialLinks]
+        for(let i = (socialLinks.length-3) ; i>0; i--){
+            $('.social-link-wrapper').append(inputTemplate)
+        }
+
+        let i = 0;
+        $('.social-link').each(function(){
+            $(this).val(socialLinks[i++])
+        })
+    })
     
     // add more social links input
     $("#add-more").click(function(){
         if($(".social-link").length < 12)  // limit the social links to 12
-           $(".social-link-wrapper").append('<input type="text" class="social-link" placeholder="https://"/></br>')
+           $(".social-link-wrapper").append(inputTemplate)
         else{
             // notify user
             const notifOptions = {
@@ -24,12 +40,20 @@ $(function(){
     
     // open tabs for the social links
     $("#open-tabs").click(function(){
+        socialLinks = []
+
 
         // get the social links from the input tags
         $(".social-link").each(function(){
             const url = $(this).val()
-            validateUrl(url) ? socialLinks.push(url) : null
+            
+            if(validateUrl(url)){
+                /(https:\/\/|http:\/\/).+/i.test(url) ? socialLinks.push(url) : socialLinks.push('https://' + url)  
+            }
         })
+
+
+        chrome.storage.sync.set({'socialLinks': socialLinks})
 
         // get the current window id, total no of tabs in the current window
         chrome.tabs.query({currentWindow: true}, function(obj){
@@ -50,18 +74,10 @@ $(function(){
      
     })
 
-    
-    // type social links to the input tag
-    $(document).on('keyup', '.social-link', function(){
-
-        const re = /(https:\/\/)*(.+)/i
-        const url = !re.exec($(this).val()) ?
-                         $(this).val() : 
-                         re.exec($(this).val())[2]  
-    
-        $(this).val("https://" + url)
+    // remove the input tags
+    $(document).on('click', '.social-link-wrapper span', function(){
+        $(this).parent().remove()
     })
-
 
 })
 

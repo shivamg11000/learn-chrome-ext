@@ -27,6 +27,24 @@ h1{
 .highlight{
     border-bottom: 1px solid #888;
 }
+.social-link-wrapper > div{
+    display: flex;
+    align-items: center;
+
+}
+.social-link-wrapper span{
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgba(244, 179, 65, 0.6);
+    font-size: 18px;
+    padding: 2px 4px;
+    margin-left: 4px;
+    border-radius: 100%;
+}
+.social-link-wrapper span:hover{
+    background-color: rgba(244, 179, 65, 1)
+}
+
 
 .social-link{
     font-size: 0.8rem;
@@ -36,6 +54,7 @@ h1{
     border: 1px solid #777;
     background-color: #f8f8f8;
 }
+
 
 button{
     background-color: rgba(58,106,184, 0.9);
